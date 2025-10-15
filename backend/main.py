@@ -6,8 +6,8 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",  # your frontend URL
-    "https://smart-recipe-generator-six-hazel.vercel.app/",
-    "https://smart-recipe-generator-logesh-kaavyans-projects-3171e207.vercel.app/"
+    "https://smart-recipe-generator-six-hazel.vercel.app",
+    "https://smart-recipe-generator-logesh-kaavyans-projects-3171e207.vercel.app"
 ]
 
 app.add_middleware(
