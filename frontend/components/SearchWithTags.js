@@ -16,7 +16,7 @@ export default function SearchWithTags({ onSearch }) {
         return;
       }
       const res = await fetch(
-        `http://127.0.0.1:8000/suggestions/?query=${query}`
+        `https://smart-recipe-generator1.onrender.com/suggestions/?query=${query}`
       );
       const data = await res.json();
       setSuggestions(data.suggestions);
