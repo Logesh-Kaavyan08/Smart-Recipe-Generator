@@ -1,0 +1,208 @@
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+}
+
+/* HERO / Recipe Title */
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #660033, #E673AC);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.hero-desc {
+  font-size: 1.125rem;
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.hero-tags span {
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.cooking-time { background: rgba(230,115,172,0.12); color: #E673AC; }
+.difficulty { background: rgba(70,145,16,0.10); color: #AEE79D; }
+.nutrition-count { background: rgba(102,0,51,0.08); color: #F9D7E2; }
+
+/* Main Grid */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media(min-width: 1024px) {
+  .main-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Section Cards */
+.section-card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Ingredients */
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ingredient {
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  background: rgba(70,145,16,0.10);
+  color: #E6F7DA;
+}
+
+/* Steps */
+.steps {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(255,255,255,0.08);
+}
+
+.step-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.step-number {
+  position: absolute;
+  left: -2.5rem;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg,#660033,#E673AC);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.step-text {
+  background: rgba(255,255,255,0.02);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  color: #e5e7eb;
+}
+
+/* Right Column */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Nutrition Card */
+.nutrition-card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.nutrition-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.nutrition-item {
+  background: rgba(255,255,255,0.02);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.nutrition-item .label {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+}
+
+.nutrition-item .value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Buttons */
+.button-primary {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(90deg,#469110,#00520A);
+  color: #ffffff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.button-secondary {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255,255,255,0.04);
+  color: #ffffff;
+}
+
+.button-gradient {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(90deg,#660033,#E673AC);
+  color: #ffffff;
+}

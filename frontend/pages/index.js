@@ -1,115 +1,81 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+// index.js
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+"use client";
+import { useState } from "react";
+import AnimatedSearch from "../components/AnimatedSearch";
+import RecipeCard from "../components/RecipeCard";
+import FilterPanel from "../components/FilterPanel";
+import { getRecipes } from "../utils/api";
+import { motion } from "framer-motion";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const FilterIcon = () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M3 6H21M7 18H17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+);
 
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              pages/index.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    const [tags, setTags] = useState([]);
+    const [recipes, setRecipes] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [filters, setFilters] = useState({});
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+    // ... (addTag and search functions remain the same)
+    const addTag = (t) => {
+        t = t.toLowerCase();
+        if (!tags.includes(t)) setTags(prev => [...prev, t]);
+        else setTags(prev => prev.filter(x => x !== t));
+    };
+
+    const search = async () => {
+        if (tags.length === 0) return;
+        setLoading(true);
+        const data = await getRecipes(tags.join(","), filters);
+        const withMatches = data.recipes.map(r => {
+            const count = r.ingredients.filter(i => tags.includes(i)).length;
+            return { ...r, matchCount: count };
+        }).sort((a, b) => b.matchCount - a.matchCount);
+        setRecipes(withMatches);
+        setLoading(false);
+    };
+
+    return (
+        <main style={{ padding: "48px 24px" }}>
+            <div style={{ maxWidth: 1100, margin: "0 auto 32px" }}>
+                <h1 className="title-xxl" style={{ marginTop: 8 }}>Smart Recipe Generator</h1>
+                <p className="subtle" style={{ marginTop: 10 }}>Find delightful recipes from what you have</p>
+            </div>
+
+            {/* --- FIX #2: Reduced gap to move button closer to the search bar --- */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', maxWidth: 1100, margin: '0 auto', borderRadius: 12}}>
+                
+                <motion.button
+                    onClick={() => setIsFilterOpen(!isFilterOpen)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    // --- FIX #1: Cleaned up classes to ensure `rounded-full` applies correctly ---
+                    className={`flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-3xl transition-all duration-300 ease-in-out cursor-pointer shadow-lg hover:shadow-pink-800/30 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-75 ${isFilterOpen ? 'bg-gradient-to-br from-[#E673AC] to-[#99004C]' : 'bg-[rgba(255,255,255,0.08)]'}`}
+                    aria-label="Toggle Filters"
+                >
+                    <motion.div animate={{ rotate: isFilterOpen ? 90 : 0 }}>
+                        <FilterIcon />
+                    </motion.div>
+                </motion.button>
+
+                <div style={{ flexGrow: 1 }}>
+                    <AnimatedSearch selected={tags} onAddTag={addTag} onSearch={search} />
+                </div>
+            </div>
+
+            <FilterPanel isOpen={isFilterOpen} onFilterChange={setFilters} />
+
+            <div style={{ maxWidth: 1100, margin: "28px auto 0" }}>
+                {loading ? <p className="subtle">Loading…</p> : null}
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20, marginTop: 18 }}>
+                    {recipes.map((r, i) => <RecipeCard key={i} recipe={r} matchedCount={r.matchCount} />)}
+                </div>
+            </div>
+        </main>
+    );
 }

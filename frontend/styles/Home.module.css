@@ -1,0 +1,141 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #660033, #E673AC);
+  -webkit-background-clip: text; /* for Safari/Chrome */
+  background-clip: text;         /* standard property */
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+.search-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  background: linear-gradient(135deg, #469110, #00520A);
+  color: #ffffff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.tag button {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.tag button:hover {
+  color: #E673AC;
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #D1D5DB;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  border-color: #660033;
+  box-shadow: 0 0 0 2px rgba(230, 115, 172, 0.2);
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.suggestion-item:hover {
+  background: linear-gradient(90deg, #660033, #E673AC);
+  color: #ffffff;
+}
+
+.button {
+  background: linear-gradient(90deg, #469110, #00520A);
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.recipe-card {
+  background: linear-gradient(135deg, #660033, #E673AC);
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.recipe-card h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.recipe-card p {
+  font-size: 0.875rem;
+  color: #F3F4F6;
+}
