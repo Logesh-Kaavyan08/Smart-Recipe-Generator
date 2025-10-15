@@ -6,6 +6,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",  # your frontend URL
+    "https://smart-recipe-generator.vercel.app"
 ]
 
 app.add_middleware(
@@ -16,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-with open("D:/recipe_generator/frontend/data/recipes.json") as f:
+with open("../frontend/data/recipes.json") as f:
     recipes = json.load(f)
 
 @app.get("/")
