@@ -1,42 +1,34 @@
 # Smart Recipe Generator 
 
-### [cite_start]Find delightful recipes from what you have. [cite: 10]
+### Find delightful recipes from what you have.
 
 <br/>
 
-![Smart Recipe Generator Demo]
-
-<div align="center">
-
-[cite_start]**[Live Application](https://smart-recipe-generator-six-hazel.vercel.app/)** [cite: 7] [cite_start]**•** **[GitHub Repository](https://github.com/Logesh-Kaavyan08/Smart-Recipe-Generator)** [cite: 7]
-
-</div>
-
 ## 📖 About The Project
 
-[cite_start]As a developer passionate about creating intuitive user experiences, I built the Smart Recipe Generator to help users find recipes based on the ingredients they already have[cite: 3]. [cite_start]My goal was to build a full-stack application that was not only functional but also fast, responsive, and enjoyable to use[cite: 4].
+As a developer passionate about creating intuitive user experiences, I built the Smart Recipe Generator to help users find recipes based on the ingredients they already have. My goal was to build a full-stack application that was not only functional but also fast, responsive, and enjoyable to use.
 
-[cite_start]This project features a **Next.js** frontend and a **Python (FastAPI)** backend, demonstrating a clear separation of concerns and a modern, decoupled architecture[cite: 5].
+This project features a **Next.js** frontend and a **Python (FastAPI)** backend, demonstrating a clear separation of concerns and a modern, decoupled architecture.
 
 ---
 
 ## 🚀 Key Features
 
 * **Dynamic and Intuitive Ingredient Search**
-    * [cite_start]**Real-time Suggestions:** Get auto-complete suggestions as you type, powered by a debounced API call to prevent server overload[cite: 19].
-    * [cite_start]**Tag-Based Interface:** Selected ingredients are added as interactive "tags" for a clear visual representation of your search query[cite: 21].
+    * **Real-time Suggestions:** Get auto-complete suggestions as you type, powered by a debounced API call to prevent server overload.
+    * **Tag-Based Interface:** Selected ingredients are added as interactive "tags" for a clear visual representation of your search query.
 
 * **Advanced, Multi-Faceted Filtering System**
-    * [cite_start]**Instant Results:** Refine your search instantly by Difficulty Level, Maximum Cooking Time, and multiple Dietary Restrictions (e.g., Vegan, Gluten-Free)[cite: 37, 38, 39, 40].
-    * [cite_start]**Interactive Controls:** An interactive slider for cooking time provides a seamless user experience[cite: 39].
+    * **Instant Results:** Refine your search instantly by Difficulty Level, Maximum Cooking Time, and multiple Dietary Restrictions (e.g., Vegan, Gluten-Free).
+    * **Interactive Controls:** An interactive slider for cooking time provides a seamless user experience.
 
 * **Polished User Experience with Framer Motion**
-    * [cite_start]**Smooth Page Transitions:** Navigating between pages is seamless, with elegant fade and slide animations[cite: 75].
-    * [cite_start]**Meaningful Micro-interactions:** UI elements like recipe cards and the filter panel animate into view, elevating the overall feel of the application[cite: 76, 77].
+    * **Smooth Page Transitions:** Navigating between pages is seamless, with elegant fade and slide animations.
+    * **Meaningful Micro-interactions:** UI elements like recipe cards and the filter panel animate into view, elevating the overall feel of the application.
 
 * **Scalable, Dynamically Generated Recipe Pages**
-    * [cite_start]**SEO-Friendly URLs:** Leveraging Next.js's dynamic routing, each recipe gets a unique, shareable, and SEO-friendly URL (e.g., `/recipe/chicken-tikka-masala`)[cite: 108, 109].
-    * [cite_start]**Maintainable Code:** A single, reusable React component serves as the template for all recipe pages, making the architecture efficient and scalable[cite: 110, 111].
+    * **SEO-Friendly URLs:** Leveraging Next.js's dynamic routing, each recipe gets a unique, shareable, and SEO-friendly URL (e.g., `/recipe/chicken-tikka-masala`).
+    * **Maintainable Code:** A single, reusable React component serves as the template for all recipe pages, making the architecture efficient and scalable.
 
 ---
 
@@ -50,59 +42,6 @@
 
 ---
 
-## 🔧 Getting Started
-
-To get a local copy up and running, follow these simple steps.
-
-### Prerequisites
-
-* Node.js (v18 or later)
-* npm
-* Python (v3.8 or later)
-
-### Installation & Setup
-
-1.  **Clone the repository:**
-    ```sh
-    git clone [https://github.com/Logesh-Kaavyan08/Smart-Recipe-Generator.git](https://github.com/Logesh-Kaavyan08/Smart-Recipe-Generator.git)
-    cd Smart-Recipe-Generator
-    ```
-
-2.  **Setup the Backend (FastAPI):**
-    ```sh
-    # Navigate to the backend directory
-    cd backend
-
-    # Create and activate a virtual environment
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-
-    # Install dependencies
-    pip install -r requirements.txt
-
-    # Run the server
-    uvicorn main:app --reload
-    ```
-    The backend will be running at `http://127.0.0.1:8000`.
-
-3.  **Setup the Frontend (Next.js):**
-    ```sh
-    # Navigate to the frontend directory from the root
-    cd frontend
-
-    # Install NPM packages
-    npm install
-
-    # Create a .env.local file and add the API URL
-    echo "NEXT_PUBLIC_API_URL=[http://127.0.0.1:8000](http://127.0.0.1:8000)" > .env.local
-
-    # Run the development server
-    npm run dev
-    ```
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
----
-
 ## 📝 API Endpoints
 
 The backend provides the following endpoints:
@@ -113,3 +52,4 @@ The backend provides the following endpoints:
 | `GET`  | `/recipes/`           | Fetches recipes based on query parameters.         |
 | `GET`  | `/suggestions/`       | Fetches ingredient suggestions based on a query.   |
 | `GET`  | `/recipe/{name}`      | Fetches a single recipe by its slugified name.     |
+
